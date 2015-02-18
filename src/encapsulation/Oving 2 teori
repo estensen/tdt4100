@@ -1,0 +1,15 @@
+Account Del 1
+Forklar hvorfor metodene over kan sies å være en komplett innkapsling av tilstanden?
+Siden variablene er private kan man kun endre variablene via getterene og setterene.Dermed vil variablene alltid ha gyldige verdier. 
+
+Er denne klassen data-orientert eller tjeneste-orientert? Begrunn svaret!
+Data-orientert siden den hovedsakelig oppbevarer data
+
+
+Person Del 2
+Foreslå en alternativ innkapsling av navnet. Hint: del opp.
+Navnet kan deles opp i fornavn og etternavn
+
+Foreslå to alternative strategier for å kapsle inn tilstand som er koblet slik navn og e-post er. Hint: 1) samtidig og 2) dekoble.
+1) Lage en separat check-metode for navn og epost
+2) Ha en samlet check-metode som jeg har i oppgaven som kontrollerer hele epost-adressen i ett

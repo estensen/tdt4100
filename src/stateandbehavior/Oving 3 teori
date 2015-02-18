@@ -1,0 +1,20 @@
+Spørsmål:
+Hvilken type unntak vil det være naturlig å bruke?
+IllegalStateException()
+
+Hvilke fordeler og ulemper ser du for dette alternativet?
++ Try/catch kan si til brukeren hva feilen er
+- Krasjer programmet
+
+Spørsmål:
+Hva vil tilsvarende verdi for manglende operand for '*'-operasjonen (multiplikasjon) være? Hva med for '/' (divisjon)?
++0
+-0
+*1
+/1
+
+Hvordan kan du endre (evt. har du endret) API-et for stack-operasjonene for å gjøre implementasjonen av disse enklere?
+Har gjort det
+
+Også her er et alternativ å utløse unntak. Hva tror du om det?
+Dumt å krasje, men try/catch med feilmelding er ok
