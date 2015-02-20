@@ -21,7 +21,7 @@ public class TicTacToeProgram {
 		System.out.println(" 0 1 | 1 1 | 2 1");
 		System.out.println("-----------------");
 		System.out.println(" 0 2 | 1 2 | 2 2");
-		System.out.println("##################");
+		System.out.println(	"##################");
 		System.out.println();
 		System.out.println(game);
 		while (true) {
