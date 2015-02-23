@@ -1,4 +1,4 @@
-package objektstrukturer;
+package objectstructures;
 
 public class TwitterProgram {
 

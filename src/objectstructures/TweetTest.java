@@ -1,4 +1,4 @@
-package objektstrukturer;
+package objectstructures;
 
 import junit.framework.TestCase;
 import no.hal.jex.runtime.JExercise;

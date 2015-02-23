@@ -16,7 +16,6 @@ public class Person {
 //	Source --> genereate getters and setters
 	
 	public Person() {
-		
 	}
 	
 	public String getName() {
