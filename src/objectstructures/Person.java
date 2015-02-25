@@ -36,7 +36,7 @@ public class Person {
 	}
 	
 	public void setMother(Person mother) {
-		if (mother.gender != 'F') {
+		if (mother != null && mother.gender != 'F') {
 			throw new IllegalArgumentException("You can't have a male mother!");
 		}
 		
@@ -44,12 +44,18 @@ public class Person {
 			throw new IllegalArgumentException("You can't be your own mother!");
 		}
 		
+		else if (mother == this.mother) {
+			return;
+		}
+		
 		else if (this.mother != null) {
-			throw new IllegalArgumentException("This person already has a mother!");
+			this.mother.children.remove(this);
+			this.mother = mother;
+			mother.children.add(this);
 		}
 		else {
 			this.mother = mother;
-			mother.addChild(this);
+			mother.children.add(this);
 		}		
 	}
 	
@@ -58,7 +64,7 @@ public class Person {
 	}
 	
 	public void setFather(Person father) {
-		if (father.gender != 'M') {
+		if (father != null && father.gender != 'M') {
 			throw new IllegalArgumentException("You can't have a female father!");
 		}
 		
@@ -66,15 +72,21 @@ public class Person {
 			throw new IllegalArgumentException("You can't be your own father!");
 		}
 		
+		else if (father == this.father) {
+			return;
+		}
+		
 		else if (this.father != null) {
-			throw new IllegalArgumentException("This person already has a father!");
+			this.father.children.remove(this);
+//			må fjerne den gamle faren
+			this.father = father;
+			father.children.add(this);
 		}
 		else {
 			this.father = father;
-			father.addChild(this);
+			father.children.add(this);
 		}		
 	}
-	
 	
 	public int getChildCount() {
 		return children.size();
@@ -94,21 +106,30 @@ public class Person {
 	}
 	
 	public void addChild(Person child) {
-		boolean childAsChild = false;
+		boolean alreadyChild = false;
 		for (Person p : this.children) {
+//			will go through the list of children and check if the child is already a child of this parent
 			if (p == child) {
-				childAsChild = true;
+				alreadyChild = true;
 			}
 		}
-		if (childAsChild) {
-			
+		if (alreadyChild) {
+			throw new IllegalArgumentException("This child is already a child of this parent");
 		}
 		else if (this != child) {
-			this.children.add(child);
+//			if the child is not in the list of children
+//			"this" is the parent
+//			add to the list of children
 			if (this.gender == 'M') {
+				if (child.father != null) {
+					child.father.children.remove(child);
+				}
 				child.setFather(this);
 			}
 			else {
+				if (child.mother != null) {
+					child.mother.children.remove(child);
+				}
 				child.setMother(this);
 			}
 		}
@@ -119,13 +140,13 @@ public class Person {
 
 	
 	public void removeChild(Person child) {
-		boolean childAsChild = false;
+		boolean alreadyChild = false;
 		for (Person p : this.children) {
 			if (p == child) {
-				childAsChild = true;
+				alreadyChild = true;
 			}
 		}
-		if (childAsChild) {
+		if (alreadyChild) {
 			this.children.remove(child);
 			if (this.gender == 'M') {
 				child.setFather(null);
@@ -146,36 +167,61 @@ public class Person {
 	
 	
 	public static void main(String[] args) {
-		Person me = new Person("Håvard", 'M');
-		Person p = new Person("Finn", 'M');
-		Person m = new Person("Bergljot", 'F');
-		Person b = new Person("Bjørn", 'M');
-		Person g = new Person("Guro", 'F');
-		Person mm = new Person("Vesla", 'F');
-		Person mf = new Person ("Kjell", 'M');
+		Person anne = new Person("Anne", 'F');
+		Person jens = new Person("Jens", 'M');
+		Person hallvar = new Person("Hallvar", 'M');
 		
-		ArrayList<Person> persons = new ArrayList<Person>();
-		persons.add(me);
-		persons.add(p);
-		persons.add(m);
-		persons.add(b);
-		persons.add(g);
-		persons.add(mm);
-		persons.add(mf);
-		
-		mm.addChild(m);
-		mf.addChild(m);
-		m.addChild(me);
-		m.addChild(b);
-		m.addChild(g);
-		p.addChild(me);
-		p.addChild(b);
-		p.addChild(g);
+		jens.addChild(anne);
+		jens.addChild(hallvar);
+		System.out.println(jens.children);
 		
 		
-		System.out.println("Antall barn p har: " + p.getChildCount());
-		System.out.println("Barn 1: " + p.getChild(0));
-		System.out.println("Barn 2: " + p.getChild(1));
-		System.out.println("Barn 3: " + p.getChild(2));
+		
+		
+//		Person me = new Person("Håvard", 'M');
+//		Person p = new Person("Finn", 'M');
+//		Person m = new Person("Bergljot", 'F');
+//		Person b = new Person("Bjørn", 'M');
+//		Person g = new Person("Guro", 'F');
+//		Person mm = new Person("Vesla", 'F');
+//		Person mf = new Person ("Kjell", 'M');
+//		
+//		ArrayList<Person> persons = new ArrayList<Person>();
+////		puts the family in a list
+//		persons.add(me);
+//		persons.add(p);
+//		persons.add(m);
+//		persons.add(b);
+//		persons.add(g);
+//		persons.add(mm);
+//		persons.add(mf);
+//		
+//		mm.addChild(m);
+//		mf.addChild(m);
+//		m.addChild(me);
+//		m.addChild(b);
+//		m.addChild(g);
+//		p.addChild(me);
+//		p.addChild(b);
+//		p.addChild(g);
+//		
+//		
+//		System.out.println("Antall barn p har: " + p.getChildCount());
+//		System.out.println("Barn 1: " + p.getChild(0));
+//		System.out.println("Barn 2: " + p.getChild(1));
+//		System.out.println("Barn 3: " + p.getChild(2));
+//		
+//		System.out.println("Hele familien:");
+//		
+//		for (Person familyMember : persons) {
+//			System.out.printf("Navn: %s  [%c]\n", familyMember.getName(),familyMember.getGender());
+//		}
+		
+		
+//		Skjønner meg ikke helt på hva som er feil. JUnit-testene er ganske uforståelige
+//		Er det slik å forstå at det å bytte foreldre er lovlig? Ville ikke si det er det i den virkelige verden ...
+		
+		
+		
 	}
 }
