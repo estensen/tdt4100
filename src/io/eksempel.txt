@@ -1,0 +1,3 @@
+linje 1
+linje 2
+linje med æ, ø og å

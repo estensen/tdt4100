@@ -71,7 +71,7 @@ public class Person {
 		else if (this == father) {
 			throw new IllegalArgumentException("You can't be your own father!");
 		}
-		
+
 		else if (father == this.father) {
 			return;
 		}
@@ -178,48 +178,45 @@ public class Person {
 		
 		
 		
-//		Person me = new Person("Håvard", 'M');
-//		Person p = new Person("Finn", 'M');
-//		Person m = new Person("Bergljot", 'F');
-//		Person b = new Person("Bjørn", 'M');
-//		Person g = new Person("Guro", 'F');
-//		Person mm = new Person("Vesla", 'F');
-//		Person mf = new Person ("Kjell", 'M');
-//		
-//		ArrayList<Person> persons = new ArrayList<Person>();
-////		puts the family in a list
-//		persons.add(me);
-//		persons.add(p);
-//		persons.add(m);
-//		persons.add(b);
-//		persons.add(g);
-//		persons.add(mm);
-//		persons.add(mf);
-//		
-//		mm.addChild(m);
-//		mf.addChild(m);
-//		m.addChild(me);
-//		m.addChild(b);
-//		m.addChild(g);
-//		p.addChild(me);
-//		p.addChild(b);
-//		p.addChild(g);
-//		
-//		
-//		System.out.println("Antall barn p har: " + p.getChildCount());
-//		System.out.println("Barn 1: " + p.getChild(0));
-//		System.out.println("Barn 2: " + p.getChild(1));
-//		System.out.println("Barn 3: " + p.getChild(2));
-//		
-//		System.out.println("Hele familien:");
-//		
-//		for (Person familyMember : persons) {
-//			System.out.printf("Navn: %s  [%c]\n", familyMember.getName(),familyMember.getGender());
-//		}
+		Person me = new Person("Håvard", 'M');
+		Person p = new Person("Finn", 'M');
+		Person m = new Person("Bergljot", 'F');
+		Person b = new Person("Bjørn", 'M');
+		Person g = new Person("Guro", 'F');
+		Person mm = new Person("Vesla", 'F');
+		Person mf = new Person ("Kjell", 'M');
+		
+		ArrayList<Person> persons = new ArrayList<Person>();
+//		puts the family in a list
+		persons.add(me);
+		persons.add(p);
+		persons.add(m);
+		persons.add(b);
+		persons.add(g);
+		persons.add(mm);
+		persons.add(mf);
+		
+		mm.addChild(m);
+		mf.addChild(m);
+		m.addChild(me);
+		m.addChild(b);
+		m.addChild(g);
+		p.addChild(me);
+		p.addChild(b);
+		p.addChild(g);
 		
 		
-//		Skjønner meg ikke helt på hva som er feil. JUnit-testene er ganske uforståelige
-//		Er det slik å forstå at det å bytte foreldre er lovlig? Ville ikke si det er det i den virkelige verden ...
+		System.out.println("Antall barn p har: " + p.getChildCount());
+		System.out.println("Barn 1: " + p.getChild(0));
+		System.out.println("Barn 2: " + p.getChild(1));
+		System.out.println("Barn 3: " + p.getChild(2));
+		
+		System.out.println("Hele familien:");
+		
+		for (Person familyMember : persons) {
+			System.out.printf("Navn: %s  [%c]\n", familyMember.getName(),familyMember.getGender());
+		}
+		
 		
 		
 		
